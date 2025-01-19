@@ -8,28 +8,33 @@ import {
   MessageCircle,
 } from "lucide-react";
 
-import {services, categories} from "../Index"
+import { services, categories } from "../MenuIndex";
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
-  
   return (
     <>
+      {/* Close sidebar on clicking the other part of the screen */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 transition-opacity z-40"
+          className="fixed inset-0 top-16 bg-black bg-opacity-50 transition-opacity z-40"
           onClick={onClose}
         />
       )}
       <div
-        className={`fixed top-0 left-0 h-full w-80 bg-white transform transition-transform duration-300 ease-in-out z-50 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed top-16 left-0 h-[calc(100%-4rem)] w-80 bg-white transform transition-transform duration-300 ease-in-out z-40 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
         <div className="h-full flex flex-col overflow-y-auto">
           <div className="p-4 border-b flex justify-between items-center">
-            <h2 className="text-xl font-semibold">Menu</h2>
+            <h2 className="text-xl font-semibold">ShopHub</h2>
+
+            {/* Close sidebar on clicking X button */}
             <button
               onClick={onClose}
               className="p-2 hover:bg-gray-100 rounded-full"
@@ -62,6 +67,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               </a>
             </div>
             <div className="mb-6">
+              <hr className="mb-6" />
               <h3 className="px-4 text-sm font-semibold text-gray-500 mb-2">
                 OUR CATEGORIES
               </h3>
@@ -79,6 +85,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
             <div className="mb-6">
+              <hr className="mb-6" />
               <h3 className="px-4 text-sm font-semibold text-gray-500 mb-2">
                 OUR SERVICES
               </h3>
